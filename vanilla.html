@@ -6,14 +6,16 @@
     <title>React JS</title>
 </head>
 <body>
-
+    <div id = "root"></div>
     <!-- import React cdn -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 
     <!-- React code starts -->
     <script>
-
+        const root = document.getElementById("root");
+        const span = React.createElement("span", {id : "ex-spam", style : {color: "red"}}, "I am a span"); // create span tag / parameter -> (tag, property, content)
+        ReactDOM.render(span, root) // put tags in html
     </script>
 </body>
 </html>
