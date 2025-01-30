@@ -18,9 +18,12 @@
     <script type = "text/babel">
         const root = document.getElementById("root");
         // JSX starts from here
-        const Title = (
-            <h3 id = "title" onMouseEnter = {() => console.log("mouse enter")}>I am a title</h3>
-        );
+        function Title(){
+            return(
+                <h3 id = "title" onMouseEnter = {() => console.log("mouse enter")}>I am a title</h3>
+            );
+        }
+    
         /*
         const h3 = React.createElement(
             "h3", 
@@ -29,7 +32,7 @@
             onMouseEnter: () => console.log("mouse enter"),
         }, "I am a title"); */ // create span tag / parameter -> (tag, property, content)
 
-        const Button = (
+        const Button = () => (
             <button style = {{backgroundColor : "tomato",}} onClick = {() => console.log("i am clicked")}>Click me</button>
         );
         /*
@@ -43,10 +46,16 @@
         }, "Click me");
         */
         
-        const Container = React.createElement("div",null,[Title, Button])
+        // It should start with upper case, or JSX will consider it is just as HTML tag, not JSX tag that i made.
+        const Container = (
+            <div>
+                <Title/>
+                <Button/>
+            </div>
+        );
         /* const container =  React.createElement("div", null, [Title, Button]) */
         
-        ReactDOM.render(container, root) // put tags in html
+        ReactDOM.render(Container, root) // put tags in html
     </script>
 </body>
 </html>
