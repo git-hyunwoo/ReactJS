@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSX example</title>
+</head>
+<body>
+    <div id = "root"></div>
+    <!-- import React cdn -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+    <!-- To use JSX, you need this CDN -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- React code starts -->
+    <script type = "text/babel">
+        const root = document.getElementById("root");
+        // JSX starts from here
+        let counter = 0;
+        function countUp(){
+            counter = counter + 1;
+            render();
+        }
+
+        function render(){
+            ReactDOM.render(<Container/>, root) // put tags in html
+        }
+        // It should start with upper case, or JSX will consider it is just as HTML tag, not JSX tag that i made.
+        function Container(){
+            return(
+                <div>
+                    <h3>Total click : {counter}</h3>
+                    <button onClick = {countUp}>Click me</button>
+                </div>
+            );
+        } 
+            
+        /* const container =  React.createElement("div", null, [Title, Button]) */
+        
+        redner();
+        
+    </script>
+</body>
+</html>
