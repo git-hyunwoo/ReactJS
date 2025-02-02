@@ -23,11 +23,14 @@
 
         // It should start with upper case, or JSX will consider it is just as HTML tag, not JSX tag that i made.
         function App(){
-            const [counter,modifier] = React.useState(0);
+            let [counter,setCounter] = React.useState(0);
+            const onClick =  () => {
+                setCounter(counter + 1);
+            }
             return(
                 <div>
                     <h3>Total click : {counter}</h3>
-                    <button>Click me</button>
+                    <button onClick = {onClick}>Click me</button>
                 </div>
             );
         } 
