@@ -27,6 +27,8 @@
             const onClick =  () => {
                 setCounter(counter + 1);
             }
+            console.log("rendered");
+            console.log(counter);
             return(
                 <div>
                     <h3>Total click : {counter}</h3>
@@ -34,7 +36,7 @@
                 </div>
             );
         } 
-            
+
         /* const container =  React.createElement("div", null, [Title, Button]) */
         
         ReactDOM.render(<App/>, root);
