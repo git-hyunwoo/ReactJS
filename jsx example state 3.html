@@ -24,6 +24,8 @@
         // It should start with upper case, or JSX will consider it is just as HTML tag, not JSX tag that i made.
         function App(){
             const [minutes, setMinutes] = React.useState(0);
+            const [flipped, setFlipped] = React.useState(false);
+
             const onChange = (event) => {
                 console.log(event.target.value);
                 setMinutes(event.target.value);
@@ -31,6 +33,12 @@
             const reset = () => {
                 setMinutes(0);
             }
+            
+            const onFlip = () => { 
+                setFlipped((current) => !current);
+
+            }
+
             return(
                 <div>
                     <h1>Super Converter</h1>
@@ -41,7 +49,9 @@
                             id = "minutes" 
                             placeholder = "Minutes" 
                             type = "number" 
+                            disabled = {flipped}
                             onChange = {onChange}/>
+                            
                         <h4>You want to convert {minutes}</h4>
                     </div>
 
@@ -52,9 +62,11 @@
                             id = "hours" 
                             placeholder = "Hours" 
                             type = "number"
+                            disabled = {!flipped}
                         />
                     </div>
                     <button onClick = {reset}>Reset</button>
+                    <button onClick = {onFlip}>Flipped</button>
                 </div>
             );
         } 
