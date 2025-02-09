@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSX example</title>
+</head>
+<body>
+    <div id = "root"></div>
+    <!-- import React cdn -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+    <!-- To use JSX, you need this CDN -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- React code starts -->
+    <script type = "text/babel">
+        const root = document.getElementById("root");
+        // JSX starts from here
+     
+        
+
+        // It should start with upper case, or JSX will consider it is just as HTML tag, not JSX tag that i made.
+        function App(){
+            const [amount, setAmount] = React.useState(0);
+            const [flipped, setFlipped] = React.useState(false);
+
+            const onChange = (event) => {
+                console.log(event.target.value);
+                setAmount(event.target.value);
+            };
+            const reset = () => {
+                setAmount(0);
+            }
+            
+            const onFlip = () => { 
+                reset();
+                setFlipped((current) => !current);
+
+            }
+
+            return(
+                <div>
+                    <h1>Super Converter</h1>
+                    <div>
+                        <label for = "minutes">Minutes</label>
+                        <input 
+                            value = {flipped ? amount * 60 : amount} 
+                            id = "minutes" 
+                            placeholder = "Minutes" 
+                            type = "number" 
+                            disabled = {flipped}
+                            onChange = {onChange}
+                        />
+                            
+                    </div>
+
+                    <div>
+                        <label for = "hours">Hours</label>
+                        <input 
+                            value = {flipped ? amount : Math.round(amount / 60)}
+                            id = "hours" 
+                            placeholder = "Hours" 
+                            type = "number"
+                            disabled = {!flipped}
+                            onChange = {onChange}
+                        />
+                    </div>
+                    <button onClick = {reset}>Reset</button>
+                    <button onClick = {onFlip}>Flipped</button>
+                </div>
+            );
+        } 
+
+        /* const container =  React.createElement("div", null, [Title, Button]) */
+        
+        ReactDOM.render(<App/>, root);
+        
+    </script>
+</body>
+</html>
